@@ -1,6 +1,9 @@
+.gitignore
 LICENSE.md
 README.md
+build.py
 pyproject.toml
+requirements.txt
 setup.cfg
 setup.py
 src/matrixlib_jfj/__init__.py
