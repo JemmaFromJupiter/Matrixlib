@@ -316,13 +316,16 @@ Example
 		else:
 			raise ValueError("Axis Out Of Bounds")
 
-	def determinant(self, submatrix: Matrix = None):
-		if submatrix is None:
-			submatrix = self
-		if self.get_shape() == (1, 1):
-			return self.get_value(1, 1)
-		else:
-			raise NotImplemented("")
+	def determinant(self):
+		if len(self) != len(self[0]):
+			raise ValueError("Matrix Must Be Square")
+		if self.shape == (1, 1):
+			return self[0][0]
+		if self.shape == (2, 2):
+			return (self.get_value(0, 0) * self.get_value(1, 1)) - (self.get_value(0, 1) * self.get_value(1, 0))
+
+		raise NotImplementedError("This Function Hasnt Been Implemented yet")
+			
 	
 	def __hash__(self):
 		return hash(tuple(map(tuple, self)))
