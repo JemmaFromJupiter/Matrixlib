@@ -3,8 +3,8 @@ from typing import Union, Optional
 import math
 import random as r
 import numpy as np
-"""from . import vector
-from . import utils"""
+from . import vector
+from . import utils
 
 class Matrix(list):
 	"""Initialises a Matrix that can be used for numerous things
@@ -356,8 +356,8 @@ Example
 			return result
 		else:
 			raise ValueError("Axis Out Of Bounds")
-
-	def get_submatrix(self, current_col: int = 0) -> Matrix:
+		
+	def get_submatrix(self, current_col: int = 0):
 		if len(self) != len(self[0]):
 			raise ValueError("Matrix Must Be Square")
 		result = Matrix((self.shape[0]-1, self.shape[1]-1))
@@ -371,7 +371,7 @@ Example
 
 		return result
 
-	def det(self) -> Union(int, float):
+	def det(self):
 		if len(self) != len(self[0]):
 			raise ValueError("Matrix Must Be Square")
 		if self.shape == (1, 1):
@@ -392,7 +392,7 @@ Example
 		return det
 			
 	
-	def __hash__(self) -> Union(int, float):
+	def __hash__(self):
 		return hash(tuple(map(tuple, self)))
 
 	def __add__(self, other: Union[Matrix, int, float]) -> Matrix:
@@ -493,8 +493,8 @@ Example
 		return self @ other
 
 	def __pow__(self, power: int) -> Matrix:
-		#if power < 0:
-			#raise ValueError("Power Must Be Greater Than 0")
+		if power < 0:
+			raise ValueError("Power Must Be Greater Than 0")
 		if not isinstance(power, int):
 			raise ValueError("Power Must Be An Integer")
 
