@@ -122,6 +122,10 @@ celerybeat.pid
 # Environments
 .env
 .venv
+poetry.lock
+.config
+.replit
+replit.nix
 env/
 venv/
 ENV/
