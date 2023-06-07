@@ -3,8 +3,8 @@ from typing import Union, Optional
 import math
 import random as r
 import numpy as np
-from . import vector
-from . import utils
+"""from . import vector
+from . import utils"""
 
 class Matrix(list[list[float]]):
 	"""Initialises a Matrix that can be used for numerous things
@@ -112,7 +112,7 @@ Example
 		return "".join(result)
 
 	def __repr__(self):
-		return self
+		return f"{type(self).__name__}(values={super().__repr__()})"
 	
 	def rank(self):
 		"""rank = self.shape[1]
@@ -450,7 +450,7 @@ Example
 	def __rsub__(self, other: Matrix | float) -> Matrix:
 		return self - other
 
-	def __mul__(self, other: int, float) -> Matrix:
+	def __mul__(self, other: int | float) -> Matrix:
 		if isinstance(other, Matrix):
 			return self @ other
 		result = Matrix(self.get_shape())
