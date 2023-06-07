@@ -42,7 +42,7 @@ from . import matrix
 from . import vector
 from . import utils
 
-__version__ = "0.1.8"
+__version__ = "0.1.9"
 __author__ = "JemmaFromJupiter"
 
 __all__ = [
