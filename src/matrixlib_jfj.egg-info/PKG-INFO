@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: matrixlib-jfj
-Version: 0.0.81
+Version: 0.0.82
 Summary: A library that deals with matrix and vector operations.
 Author: Jemma Starecki
 Author-email: Jemma Starecki <starecki.j@shaw.ca>
@@ -112,6 +112,10 @@ Fixed bug where an external program would run when the user of the package would
 
 ## Update 0.0.81
 Updated README file to reflect certain information.
+<br>
+
+## Update 0.0.82
+Fixed Type Annotations.
 <br>
 
 # Contributing

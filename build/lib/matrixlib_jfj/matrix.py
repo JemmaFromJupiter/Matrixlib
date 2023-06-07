@@ -3,10 +3,10 @@ from typing import Union, Optional
 import math
 import random as r
 import numpy as np
-from . import vector
-from . import utils
+"""from . import vector
+from . import utils"""
 
-class Matrix(list):
+class Matrix(list[list[float]]):
 	"""Initialises a Matrix that can be used for numerous things
 
 Parameters
@@ -83,13 +83,13 @@ Example
 0 0 0
 """
 
-	def __new__(cls, rowcols: Union[tuple, list] = None, values: list = None):
+	def __new__(cls, rowcols: tuple | list = None, values: list = None):
 		if rowcols is not None:
 			return super().__new__(cls, rowcols=rowcols)
 		if values is not None:
 			return super().__new__(cls, values=values)
 
-	def __init__(self, rowcols: Union[tuple, list] = None, values: list = None):
+	def __init__(self, rowcols: tuple | list = None, values: list = None):
 		if rowcols is not None:
 			super().__init__([[0] * rowcols[1] for _ in range(rowcols[0])])
 			self.shape = self.get_shape()
@@ -149,7 +149,7 @@ Example
 
 
 	
-	def fill(self, val: Union[int, float]):
+	def fill(self, val: float):
 		"""
 		Fill the Matrix with a specified value.
 
@@ -169,7 +169,7 @@ Example
 			for j in range(len(self[0])):
 				self.set_value(i, j, val)
 
-	def set_value(self, row: int, col: int, n: Union[int, float]):
+	def set_value(self, row: int, col: int, n: float):
 		"""
     Sets the value at a specified row and column.
 
@@ -191,7 +191,7 @@ Example
     """
 		self[row][col] = n  # Subtracting 1 so if the user inputs 1, the index will be auto set to 0
 
-	def get_value(self, row: int, col: int) -> Union[int, float]:
+	def get_value(self, row: int, col: int) -> float:
 		"""
 		Gets the value at a specified row and column.
 
@@ -356,8 +356,8 @@ Example
 			return result
 		else:
 			raise ValueError("Axis Out Of Bounds")
-		
-	def get_submatrix(self, current_col: int = 0):
+
+	def get_submatrix(self, current_col: int = 0) -> Matrix:
 		if len(self) != len(self[0]):
 			raise ValueError("Matrix Must Be Square")
 		result = Matrix((self.shape[0]-1, self.shape[1]-1))
@@ -371,7 +371,7 @@ Example
 
 		return result
 
-	def det(self):
+	def det(self) -> int | float:
 		if len(self) != len(self[0]):
 			raise ValueError("Matrix Must Be Square")
 		if self.shape == (1, 1):
@@ -392,10 +392,10 @@ Example
 		return det
 			
 	
-	def __hash__(self):
+	def __hash__(self) -> int | float:
 		return hash(tuple(map(tuple, self)))
 
-	def __add__(self, other: Union[Matrix, int, float]) -> Matrix:
+	def __add__(self, other: Matrix | float) -> Matrix:
 		if isinstance(other, Matrix):
 			if self.get_shape() != other.get_shape():
 				raise ValueError(
@@ -416,13 +416,13 @@ Example
 
 			return result
 
-	def __radd__(self, other: Union[int, float]) -> Matrix:
+	def __radd__(self, other: Matrix | float) -> Matrix:
 		return self + other
 
-	def __iadd__(self, other: Union[Matrix, int, float]) -> Matrix:
+	def __iadd__(self, other: Matrix | float) -> Matrix:
 		return self + other
 
-	def __sub__(self, other: Union[Matrix, int, float]) -> Matrix:
+	def __sub__(self, other: Matrix | float) -> Matrix:
 		if isinstance(other, Matrix):
 			if self.get_shape() != other.get_shape():
 				raise ValueError(
@@ -444,13 +444,13 @@ Example
 
 			return result
 
-	def __isub__(self, other: Union[Matrix, int, float]) -> Matrix:
+	def __isub__(self, other: Matrix | float) -> Matrix:
 		return self - other
 
-	def __rsub__(self, other: Union[Matrix, int, float]) -> Matrix:
+	def __rsub__(self, other: Matrix | float) -> Matrix:
 		return self - other
 
-	def __mul__(self, other: Union[int, float]) -> Matrix:
+	def __mul__(self, other: int, float) -> Matrix:
 		if isinstance(other, Matrix):
 			return self @ other
 		result = Matrix(self.get_shape())
@@ -460,10 +460,10 @@ Example
 
 		return result
 
-	def __rmul__(self, other: Union[int, float]) -> Matrix:
+	def __rmul__(self, other: float) -> Matrix:
 		return self * other
 		
-	def __imul__(self, other: Union[int, float]) -> Matrix:
+	def __imul__(self, other: float) -> Matrix:
 		return self * other
 
 	def __matmul__(self, other: Matrix):
@@ -493,8 +493,8 @@ Example
 		return self @ other
 
 	def __pow__(self, power: int) -> Matrix:
-		if power < 0:
-			raise ValueError("Power Must Be Greater Than 0")
+		#if power < 0:
+			#raise ValueError("Power Must Be Greater Than 0")
 		if not isinstance(power, int):
 			raise ValueError("Power Must Be An Integer")
 
@@ -514,7 +514,7 @@ Example
 	def __rpow__(self, power: int) -> Matrix:
 		return self ** power
 	
-	def __truediv__(self, other: Union[int, float]) -> Matrix:
+	def __truediv__(self, other: float) -> Matrix:
 		if isinstance(other, Matrix):
 			raise ValueError("Cannot Divide A Matrix By Another Matrix.")
 		result = Matrix(self.get_shape())
@@ -523,13 +523,13 @@ Example
 				result.set_value(i, j, round(self.get_value(i, j) / other, 2))
 		return result
 
-	def __itruediv__(self, other: Union[int, float]) -> Matrix:
+	def __itruediv__(self, other: float) -> Matrix:
 		return self / other
 
-	def __rtruediv__(self, other: Union[int, float]) -> Matrix:
+	def __rtruediv__(self, other: float) -> Matrix:
 		return self / other
 	
-	def __floordiv__(self, other: Union[int, float]) -> Matrix:
+	def __floordiv__(self, other: float) -> Matrix:
 		if isinstance(other, Matrix):
 			raise ValueError("Cannot Divide A Matrix By Another Matrix.")
 		result = Matrix(self.get_shape())
@@ -538,10 +538,10 @@ Example
 				result.set_value(i, j, self.get_value(i, j) // other)
 		return result
 
-	def __rfloordiv__(self, other: Union[int, float]) -> Matrix:
+	def __rfloordiv__(self, other: float) -> Matrix:
 		return self / other
 
-	def __ifloordiv__(self, other: Union[int, float]) -> Matrix:
+	def __ifloordiv__(self, other: float) -> Matrix:
 		return self / other
 
 	def __neg__(self) -> Matrix:
@@ -559,7 +559,7 @@ Example
 
 		return math.sqrt(result)
 
-	def __eq__(self, other: Union[Matrix, int, float]) -> bool:
+	def __eq__(self, other: Matrix | float) -> bool:
 		if isinstance(other, Matrix):
 			if self.get_shape() != other.get_shape():
 				return False
@@ -571,7 +571,7 @@ Example
 		else:
 			return False
 
-	def __neq__(self, other: Union[Matrix, int, float]) -> bool:
+	def __neq__(self, other: Matrix | float) -> bool:
 		if isinstance(other, Matrix):
 			if self.get_shape() != other.get_shape():
 				return True

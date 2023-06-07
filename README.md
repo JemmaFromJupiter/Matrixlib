@@ -96,6 +96,10 @@ Fixed bug where an external program would run when the user of the package would
 Updated README file to reflect certain information.
 <br>
 
+## Update 0.0.82
+Fixed Type Annotations.
+<br>
+
 # Contributing
 
 ---
