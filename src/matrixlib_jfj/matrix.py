@@ -107,6 +107,9 @@ Example
 		result.insert(0, "+-" + center_space + "-+\n")
 		return "".join(result)
 
+	def __repr__(self):
+		return self
+	
 	def fill(self, val: Union[int, float]):
 		"""
 		Fill the Matrix with a specified value.
