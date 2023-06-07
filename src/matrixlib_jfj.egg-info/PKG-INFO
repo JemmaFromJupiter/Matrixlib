@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: matrixlib-jfj
-Version: 0.0.82
+Version: 0.1.82
 Summary: A library that deals with matrix and vector operations.
 Author: Jemma Starecki
 Author-email: Jemma Starecki <starecki.j@shaw.ca>
@@ -116,6 +116,10 @@ Updated README file to reflect certain information.
 
 ## Update 0.0.82
 Fixed Type Annotations.
+<br>
+
+## Update 0.1.82
+Removed Deprecations, Removed functionality in utils.py (Temporary) added better typing, improved cumsum function.
 <br>
 
 # Contributing

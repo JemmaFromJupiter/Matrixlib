@@ -3,8 +3,8 @@ from typing import Union, Optional
 import math
 import random as r
 import numpy as np
-"""from . import vector
-from . import utils"""
+from . import vector
+from . import utils
 
 class Matrix(list[list[float]]):
 	"""Initialises a Matrix that can be used for numerous things

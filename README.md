@@ -100,6 +100,10 @@ Updated README file to reflect certain information.
 Fixed Type Annotations.
 <br>
 
+## Update 0.1.82
+Removed Deprecations, Removed functionality in utils.py (Temporary) added better typing, improved cumsum function.
+<br>
+
 # Contributing
 
 ---
