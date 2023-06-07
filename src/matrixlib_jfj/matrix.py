@@ -2,8 +2,8 @@ from __future__ import annotations
 from typing import Union, Optional
 import math
 import random as r
-from . import vector
-from . import utils
+"""from . import vector
+from . import utils"""
 
 class Matrix(list):
 	"""Initialises a Matrix that can be used for numerous things
@@ -91,8 +91,10 @@ Example
 	def __init__(self, rowcols: Union[tuple, list] = None, values: list = None):
 		if rowcols is not None:
 			super().__init__([[0] * rowcols[1] for _ in range(rowcols[0])])
+			self.shape = self.get_shape()
 		if values is not None:
 			super().__init__(values)
+			self.shape = self.get_shape()
 
 	def __str__(self):
 		rows = self.get_shape()[0]
