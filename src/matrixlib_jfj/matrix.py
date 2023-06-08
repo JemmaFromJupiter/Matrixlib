@@ -6,6 +6,7 @@ import numpy as np
 """from . import vector
 from . import utils"""
 
+
 class Matrix(list[list[float]]):
 	"""Initialises a Matrix that can be used for numerous things
 
@@ -102,18 +103,19 @@ Example
 		max = len(str(self.max()))
 		result = []
 		for row in range(rows):
-			result.append("|" + "   ".join(map(lambda el: f"{el:^{max}}", self[row])) + "|\n")
+			result.append("|" + "   ".join(map(lambda el: f"{el:^{max}}", self[row])) +
+			              "|\n")
 		if len(self) == 1:
-			center_space = " "*(len(result[0])-5)
+			center_space = " " * (len(result[0]) - 5)
 		else:
-			center_space = " "*(len(result[1])-5)
+			center_space = " " * (len(result[1]) - 5)
 		result.append("+-" + center_space + "-+")
 		result.insert(0, "+-" + center_space + "-+\n")
 		return "".join(result)
 
 	def __repr__(self):
 		return f"{type(self).__name__}(values={super().__repr__()})"
-	
+
 	def rank(self):
 		"""rank = self.shape[1]
 		for row in range(0, rank, 1):
@@ -145,10 +147,6 @@ Example
 
 		raise NotImplementedError("Function Not Implemented")
 
-							
-
-
-	
 	def fill(self, val: float):
 		"""
 		Fill the Matrix with a specified value.
@@ -189,7 +187,8 @@ Example
 
 	 	matrix.set_value(3, 1, 5) # Result: [[0, 8, 0], [0, 0, 0], [5, 0, 0]]
     """
-		self[row][col] = n  # Subtracting 1 so if the user inputs 1, the index will be auto set to 0
+		self[row][
+		 col] = n  # Subtracting 1 so if the user inputs 1, the index will be auto set to 0
 
 	def get_value(self, row: int, col: int) -> float:
 		"""
@@ -223,7 +222,7 @@ Example
 		for i in range(len(self)):
 			for j in range(len(self[0])):
 				self.set_value(i, j, r.randint(a, b))
-	
+
 	def zeros(self):
 		self.fill(0)
 
@@ -246,7 +245,7 @@ Example
 			for j in range(len(self[0])):
 				if i == j:
 					self.set_value(i, j, val)
-	
+
 	def get_shape(self) -> tuple:
 		"""
 		Gets the shape of the Matrix.
@@ -337,7 +336,7 @@ Example
 			for i, value in enumerate(flattened):
 				cumsum += value
 				flattened[i] = cumsum
-			return	flattened
+			return flattened
 		elif axis == 0:
 			result = Matrix(self.get_shape())
 			for j in range(1, self.get_shape()[1] + 1):
@@ -360,13 +359,13 @@ Example
 	def get_submatrix(self, current_col: int = 0) -> Matrix:
 		if len(self) != len(self[0]):
 			raise ValueError("Matrix Must Be Square")
-		result = Matrix((self.shape[0]-1, self.shape[1]-1))
+		result = Matrix((self.shape[0] - 1, self.shape[1] - 1))
 		for i in range(1, len(self)):
 			k = 0
 			for j in range(len(self[0])):
 				# print(i, j, self[i][j])
 				if j != current_col:
-					result.set_value(i-1, k, self.get_value(i, j))
+					result.set_value(i - 1, k, self.get_value(i, j))
 					k += 1
 
 		return result
@@ -390,8 +389,7 @@ Example
 			sign *= -1
 
 		return det
-			
-	
+
 	def __hash__(self) -> int | float:
 		return hash(tuple(map(tuple, self)))
 
@@ -462,7 +460,7 @@ Example
 
 	def __rmul__(self, other: float) -> Matrix:
 		return self * other
-		
+
 	def __imul__(self, other: float) -> Matrix:
 		return self * other
 
@@ -494,7 +492,7 @@ Example
 
 	def __pow__(self, power: int) -> Matrix:
 		#if power < 0:
-			#raise ValueError("Power Must Be Greater Than 0")
+		#raise ValueError("Power Must Be Greater Than 0")
 		if not isinstance(power, int):
 			raise ValueError("Power Must Be An Integer")
 
@@ -509,11 +507,11 @@ Example
 		return result
 
 	def __ipow__(self, power: int) -> Matrix:
-		return self ** power
+		return self**power
 
 	def __rpow__(self, power: int) -> Matrix:
-		return self ** power
-	
+		return self**power
+
 	def __truediv__(self, other: float) -> Matrix:
 		if isinstance(other, Matrix):
 			raise ValueError("Cannot Divide A Matrix By Another Matrix.")
@@ -528,7 +526,7 @@ Example
 
 	def __rtruediv__(self, other: float) -> Matrix:
 		return self / other
-	
+
 	def __floordiv__(self, other: float) -> Matrix:
 		if isinstance(other, Matrix):
 			raise ValueError("Cannot Divide A Matrix By Another Matrix.")
@@ -550,7 +548,7 @@ Example
 			for j in range(len(self[0])):
 				result.set_value(i, j, self.get_value(i, j) * -1)
 		return result
-	
+
 	def __abs__(self) -> float:
 		result = 0
 		for i in range(len(self)):
@@ -582,6 +580,6 @@ Example
 			return True
 		else:
 			return False
-		
+
 	def max(self):
 		return max(max(self, key=max))

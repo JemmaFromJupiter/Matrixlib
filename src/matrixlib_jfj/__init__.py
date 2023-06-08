@@ -45,8 +45,4 @@ from . import utils
 __version__ = "0.1.85"
 __author__ = "JemmaFromJupiter"
 
-__all__ = [
-	"matrix",
-	"vector",
-	"utils"
-]
+__all__ = ["matrix", "vector", "utils"]
