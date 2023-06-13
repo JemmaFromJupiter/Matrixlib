@@ -104,6 +104,10 @@ Fixed Type Annotations.
 Removed Deprecations, Removed functionality in utils.py (Temporary) added better typing, improved cumsum function.
 <br>
 
+## Update 0.1.90
+Added temporary base case to Matrix.rank() function.
+<br>
+
 # Contributing
 
 ---

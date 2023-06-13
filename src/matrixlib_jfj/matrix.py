@@ -117,35 +117,9 @@ Example
 		return f"{type(self).__name__}(values={super().__repr__()})"
 
 	def rank(self):
-		"""rank = self.shape[1]
-		for row in range(0, rank, 1):
-
-			if self[row][row] != 0:
-				for col in range(0, self.shape[0], 1):
-					if col != row:
-						multiplier = (self[col][row] / self[row][row])
-
-						for i in range(rank):
-							self[col][i] -= (multiplier * self[row][i])
-			else:
-				reduce = True
-
-				for i in range(row + 1, self.shape[0], 1):
-					if self[i][row] != 0:
-						for j in range(self.shape[1]):
-							temp = self[row][j]
-							self[row][j] = self[row+1][i]
-							self[row+1][i] = temp
-						reduce = False
-				if reduce:
-					rank -= 1
-
-					for i in range(0, self.shape[0], 1):
-						self[i][row] = self[i][rank]
-				row -= 1
-		return (rank)"""
-
-		raise NotImplementedError("Function Not Implemented")
+		if self.det() != 0 and len(self) == len(self[0]):
+			return len(self)
+		raise NotImplementedError("Function Not Implemented.")
 
 	def fill(self, val: float):
 		"""
