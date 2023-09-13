@@ -3,8 +3,8 @@ from typing import Union, Optional
 import math
 import random as r
 import numpy as np
-"""from . import vector
-from . import utils"""
+from . import vector
+from . import utils
 
 
 class Matrix(list[list[float]]):
@@ -104,7 +104,7 @@ Example
 		result = []
 		for row in range(rows):
 			result.append("|" + "   ".join(map(lambda el: f"{el:^{max}}", self[row])) +
-			              "|\n")
+						  "|\n")
 		if len(self) == 1:
 			center_space = " " * (len(result[0]) - 5)
 		else:
@@ -121,7 +121,10 @@ Example
 			return len(self)
 		raise NotImplementedError("Function Not Implemented.")
 
-	def fill(self, val: float):
+	def inverse(self) -> Matrix:
+		raise NotImplementedError("Function Not Implemented")
+	
+	def fill(self, val: float | int):
 		"""
 		Fill the Matrix with a specified value.
 
@@ -143,9 +146,9 @@ Example
 
 	def set_value(self, row: int, col: int, n: float):
 		"""
-    Sets the value at a specified row and column.
+	Sets the value at a specified row and column.
 
-    Parameters
+	Parameters
 		----------
 		row (int) : The row index of the element.
 
@@ -160,7 +163,7 @@ Example
  		matrix.set_value(1, 2, 8) # Result: [[0, 8, 0], [0, 0, 0], [0, 0, 0]]
 
 	 	matrix.set_value(3, 1, 5) # Result: [[0, 8, 0], [0, 0, 0], [5, 0, 0]]
-    """
+	"""
 		self[row][
 		 col] = n  # Subtracting 1 so if the user inputs 1, the index will be auto set to 0
 
@@ -256,7 +259,7 @@ Example
 	 	matrix.transpose() # Result: [[0, 0, 0], [0, 0, 0], [6, 0, 0]]
 		"""
 		self[:] = [[self[j][i] for j in range(len(self))]
-		           for i in range(len(self[0]))]
+				   for i in range(len(self[0]))]
 
 	def flatten(self) -> list:
 		"""
