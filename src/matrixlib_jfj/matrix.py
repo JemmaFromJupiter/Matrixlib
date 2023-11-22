@@ -130,7 +130,32 @@ Example:
         return rank_
 
     def inverse(self) -> Matrix:
-        raise NotImplementedError("Function Not Implemented")
+        
+        # Function referenced
+        determinant = self.det()
+        
+        if self.shape == (2, 2):
+            return Matrix(
+                values=[
+                    [self[1][1]/determinant, -1*self[0, 1]/determinant],
+                    [-1*self[1][0]/determinant, self[0][0]/determinant]
+                ]
+            )
+            
+        cofactors = []
+        for r in range(len(self)):
+            cofactor_row = []
+            for c in range(len(self)):
+                submatrix = self.get_submatrix(c)
+                cofactor_row.append(((-1)**(r+c)) * submatrix.det())
+            cofactors.append(cofactor_row)
+            
+        cofactors = Matrix(values=cofactors)
+        cofactors.transpose()
+        for r in range(len(cofactors)):
+            for c in range(len(cofactors)):
+                cofactors[r][c] = cofactors[r][c] / determinant
+        return cofactors
     
     def fill(self, val: float | int):
         """
