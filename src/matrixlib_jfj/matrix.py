@@ -8,18 +8,16 @@ from . import utils
 
 
 class Matrix(list[list[float]]):
-	"""Initialises a Matrix that can be used for numerous things
+	"""Initialises a Matrix that can be used for linear algebra.
 
-Parameters
-----------
+Parameters:
+
 rowcols (Union[tuple, list]) : The how many rows and columns are in the matrix.
 
-Returns
-----------
+Returns:
 Matrix: A 2D array of elements.
 
-Methods
-----------
+Methods:
 fill(val: Union[int, float]) -> None
 
  	Fill the Matrix with a specified value.
@@ -74,8 +72,7 @@ cumsum(axis: Optional[int, None]) -> list | Matrix
 
 	Checks if the Matrix is not equal to another object.
 
-Example
-----------
+Example:
 > matrix = Matrix((3, 3)) -> [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
 > print(matrix) # Output:\n
@@ -128,12 +125,10 @@ Example
 		"""
 		Fill the Matrix with a specified value.
 
- 		Parameters
-	 	----------
+ 		Parameters:
 	 	val (Union[int, float]) : The value to fill the Matrix with.
 
-	 	Examples
-	 	----------
+	 	Examples:
 	 	matrix = Matrix((3, 3))
 
 		matrix.fill(5) # Result: [[5, 5, 5], [5, 5, 5], [5, 5, 5]]
@@ -148,41 +143,35 @@ Example
 		"""
 	Sets the value at a specified row and column.
 
-	Parameters
-		----------
+	Parameters:
 		row (int) : The row index of the element.
 
 		col (int) : The Column Index Of The Element.
 
  		n (Union[int, float]) : The value to be set.add
 
-		Examples
-		----------
+		Examples:
 		matrix = Matrix((3, 3))
 
  		matrix.set_value(1, 2, 8) # Result: [[0, 8, 0], [0, 0, 0], [0, 0, 0]]
 
 	 	matrix.set_value(3, 1, 5) # Result: [[0, 8, 0], [0, 0, 0], [5, 0, 0]]
 	"""
-		self[row][
-		 col] = n  # Subtracting 1 so if the user inputs 1, the index will be auto set to 0
+		self[row][col] = n  # Subtracting 1 so if the user inputs 1, the index will be auto set to 0
 
 	def get_value(self, row: int, col: int) -> float:
 		"""
 		Gets the value at a specified row and column.
 
-		Parameters
-		----------
+		Parameters:
 		row (int) : The row index of the element.
 
 		col (int) : The column index of the element.
 
- 		Returns
-	 	----------
+ 		Returns:
 	 	Union[int, float] : The value of the element.
 
-		Examples
-		----------
+		Examples:
 		matrix -> [[0, 0, 0], [1, 7, 0], [0, 1, 5]]
 
 		print(matrix.get_value(2, 2)) # Output: 7
@@ -227,12 +216,10 @@ Example
 		"""
 		Gets the shape of the Matrix.
 
- 		Returns
-	 	----------
+ 		Returns:
 	 	shape_tuple : A tuple containing the rows and columns of the Matrix.
 
-		Examples
-		----------
+		Examples:
 		matrix = Matrix((3, 3))
 
 		print(matrix.get_shape()) # Output: (3, 3)
@@ -250,8 +237,7 @@ Example
 		"""
 		Flips the matrix over its diagonal.
 
-		Examples
-		----------
+		Examples:
 		matrix = Matrix((3, 3))
 
  		matrix.set_value(1, 3, 6) # Result: [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
@@ -267,12 +253,10 @@ Example
 
 		Returns a one line list of all elements in the Matrix.
 
- 		Returns
-		----------
+ 		Returns:
  		flattened_matrix: A 1-Dimensional array filled with the values from the original matrix.
 
-		Examples
-		----------
+		Examples:
 		matrix = Matrix((3, 3)) # Result: [[0, 0, 0]. [0, 0, 0], [0, 0, 0]]
 	
 		matrix.flatten() # Result: [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -283,24 +267,20 @@ Example
 		"""
 		Calculate the cumulative sum along a specified axis.
 
-		Parameters
-		----------
+		Parameters:
 		axis (int, optional) : The axis along which to compute the Cumulative Sum.
 	
 			If not specified, the cumsum is calculated over the flattened array
 
- 		Returns
-	 	----------
+ 		Returns:
 	 	list : If the axis is not specified, returns a flattened array with the calculated cumulative sums.
 
 	 	Matrix : the matrix with the cumulative sums along the specified axis.
 
-		Raises
-		----------
+		Raises:
 		ValueError : Raises if the axis is out of bounds
 
- 		Examples
-	 	----------
+ 		Examples:
 	 	matrix = Matrix((2, 2))
 	 	
 	 	matrix.set_value(1, 1, 1), matrix.set_value(1, 2, 2), matrix.set_value(2, 1, 3), matrix.set_value(2, 2, 4)
