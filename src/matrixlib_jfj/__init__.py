@@ -31,7 +31,7 @@ Examples
 	0 0 0\n
  	6 0 0
 
-Version: 0.1.90
+Version: 0.1.96
 
 Author: Jemma Starecki
 
@@ -42,7 +42,7 @@ from . import matrix
 from . import vector
 from . import utils
 
-__version__ = "0.1.94"
+__version__ = "0.1.96"
 __author__ = "JemmaFromJupiter"
 
 __all__ = ["matrix", "vector", "utils"]
