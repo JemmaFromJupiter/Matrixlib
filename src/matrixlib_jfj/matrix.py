@@ -231,16 +231,31 @@ Example:
 		return (len(self), len(self[0]))
 
 	def get_size(self):
-		return self.get_shape()[0] * self.get_shape()[0]
+		"""
+		Gets the Size of the Matrix.
+  
+		Returns:
+		size (int) : An integer value representing the size of the matrix
+  
+		Examples:
+		matrix = Matrix((3, 3))
+  
+		print(matrix.get_size()) # Output: 9
+  
+		matrix = Matrix((2, 7))
+  
+		print(matrix.get_size()) #	Output: 14
+		"""
+		return self.get_shape()[0] * self.get_shape()[1]
 
 	def transpose(self):
 		"""
-		Flips the matrix over its diagonal.
+		Flips the matrix over the diagonal.
 
 		Examples:
 		matrix = Matrix((3, 3))
 
- 		matrix.set_value(1, 3, 6) # Result: [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+ 		matrix.set_value(0, 2, 6) # Result: [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
 	 	matrix.transpose() # Result: [[0, 0, 0], [0, 0, 0], [6, 0, 0]]
 		"""
