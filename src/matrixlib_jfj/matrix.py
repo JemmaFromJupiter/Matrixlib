@@ -115,6 +115,7 @@ Example:
 
     def rank(self):
         copy = Matrix(values=self)
+        copy[0], copy[1], copy[2] = Matrix(values=copy[0]), Matrix(values=copy[1]), Matrix(values=copy[2])
         copy[1] = copy[1] - (2 * copy[0])
         copy[2] = copy[2] - (3 * copy[0])
         copy[2] = copy[2] - (2 * copy[1])
