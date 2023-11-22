@@ -114,12 +114,20 @@ Example:
         return f"{type(self).__name__}(values={super().__repr__()})"
 
     def rank(self):
+        rank_ = 0
         copy = Matrix(values=self)
-        copy[0], copy[1], copy[2] = Matrix(values=copy[0]), Matrix(values=copy[1]), Matrix(values=copy[2])
-        copy[1] = copy[1] - (2 * copy[0])
-        copy[2] = copy[2] - (3 * copy[0])
-        copy[2] = copy[2] - (2 * copy[1])
-        print(self)
+        for i in range(len(copy[1])): copy[1][i] = copy[1][i] - (2 * copy[0][i])
+        for j in range(len(copy[2])): copy[2][j] = copy[2][j] - (3 * copy[0][j])
+        for k in range(len(copy[2])): copy[2][k] = copy[2][k] - (2 * copy[1][k])
+        
+        for row in copy:
+            for col in row:
+                if col != 0:
+                    rank_ += 1
+                    break
+
+        del copy
+        return rank_
 
     def inverse(self) -> Matrix:
         raise NotImplementedError("Function Not Implemented")
