@@ -31,7 +31,7 @@ Examples
 	0 0 0\n
  	6 0 0
 
-Version: 0.2.03 (HELP, HOW DOES VERSION SCHEMA WORK???)
+Version: 0.2.04 (HELP, HOW DOES VERSION SCHEMA WORK???)
 
 Author: Jemma Starecki
 
@@ -42,7 +42,7 @@ from . import matrix
 from . import vector
 from . import utils
 
-__version__ = "0.2.03"
+__version__ = "0.2.04"
 __author__ = "JemmaFromJupiter"
 
 __all__ = ["matrix", "vector", "utils"]
