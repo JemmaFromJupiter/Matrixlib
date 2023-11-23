@@ -114,6 +114,9 @@ Example:
         return f"{type(self).__name__}(values={super().__repr__()})"
 
     def rank(self):
+        if self.shape == (2, 2):
+            return (self[0][0]*self[1][1]) - self.det()
+        
         rank_ = 0
         copy = Matrix(values=self)
         for i in range(len(copy[1])): copy[1][i] = copy[1][i] - (2 * copy[0][i])
@@ -137,6 +140,8 @@ Example:
            
            copy[0], copy[1] = copy[1], copy[0]
            identity[0], identity[1] = identity[1], identity[0]
+           print(copy)
+           print(identity)
         else:
             raise ValueError("Matrix Needs To Be Square.")
     
@@ -574,3 +579,15 @@ Example:
 
     def max(self):
         return max(max(self, key=max))
+    
+matrix = Matrix((2, 2))
+matrix.random(1, 100)
+print(f"Matrix:\n{matrix}\n")
+
+rank = matrix.rank()
+print(matrix)
+det = matrix.det()
+
+print(f"Matrix Rank: {rank}")
+print(f"Matrix Determinant: {det}")
+print(matrix.inverse())
